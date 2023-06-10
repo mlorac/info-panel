@@ -1,0 +1,71 @@
+<div class="px-2 md:px-3 lg:px-4 pb-2">
+	<div class="flex align-items-center">
+		<inf-button-back></inf-button-back>
+		<h3 class="title-page"> Formulário </h3>
+	</div>
+
+
+	<form class="grid align-items-center" #f="ngForm" (ngSubmit)="save()" novalidate>
+		<div class="field mx-3">
+			<label>Placa *</label>
+			<p-inputMask  mask="aaa9*99" placeholder="Placa do veículo"
+				[(ngModel)]="formVehicle.plate" #plate="ngModel" name="plate" [required]="true">
+			</p-inputMask>
+			<small class="text-red-500">
+				<span *ngIf="plate.invalid && (plate.dirty || plate.touched)">
+					Campo obrigatório.
+				</span>&nbsp;
+			</small>
+		</div>
+
+		<div class="field mx-3">
+			<label>Marca *</label>
+			<p-dropdown [(ngModel)]="formVehicle.brandId" #brand="ngModel" placeholder="Selecione a marca" [autoDisplayFirst]="false"
+				[options]="brands" optionLabel="description" (onChange)="changeBrand()" optionValue="id" name="brand" [required]="true">
+			</p-dropdown>
+			<small class="text-red-500">
+				<span *ngIf="brand.invalid && (brand.dirty || brand.touched)">
+					Campo obrigatório.
+				</span>&nbsp;
+			</small>
+		</div>
+
+		<div class="field mx-3">
+			<label>Modelo *</label>
+			<p-dropdown placeholder="Selecione o modelo" [autoDisplayFirst]="false" [options]="models" optionLabel="description"
+				[(ngModel)]="formVehicle.modelId" optionValue="id" #model="ngModel" name="model" [required]="true">
+			</p-dropdown>
+			<small class="text-red-500">
+				<span *ngIf="model.invalid && (model.dirty || model.touched)">
+					Campo obrigatório.
+				</span>&nbsp;
+			</small>
+		</div>
+
+		<div class="field mx-3">
+			<label>Ano modelo</label>
+			<p-inputMask mask="9999" #year="ngModel" name="year" placeholder="1900" [(ngModel)]="formVehicle.year">
+			</p-inputMask>
+			<small class="text-red-500">&nbsp;</small>
+		</div>
+
+		<div class="field mx-3">
+			<label>Chassi</label>
+			<p-inputMask mask="*** ****** ** ******" #chassi="ngModel" [(ngModel)]="formVehicle.chassi" placeholder="Chassi" name="chassi">
+			</p-inputMask>
+			<small class="text-red-500">&nbsp;</small>
+		</div>
+
+		<div class="field mx-3">
+			<label>Renavan</label>
+			<p-inputMask mask="99999999999" #renavam="ngModel" [(ngModel)]="formVehicle.renavam" placeholder="Renavam" name="renavam">
+			</p-inputMask>
+			<small class="text-red-500">&nbsp;</small>
+		</div>
+
+		<div class="field mx-3">
+			<p-button styleClass="p-button" label="Salvar" pTooltip="filtrar" type="submit">
+			</p-button>
+		</div>
+	</form>
+</div>

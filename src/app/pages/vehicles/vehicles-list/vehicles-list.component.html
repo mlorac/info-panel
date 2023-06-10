@@ -1,0 +1,49 @@
+<div class="px-2 md:px-3 lg:px-4 pb-2">
+	<div class="flex align-items-center justify-content-between">
+	  <h3 class="title-page"> Meus veículos </h3>
+
+	  <p-button label="Novo veículo" [routerLink]="['/veiculos/novo']"></p-button>
+	</div>
+
+	<div>
+		<p-table [value]="vehicles"
+			[paginator]="true"
+			[showCurrentPageReport]="true"
+			currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+			[rows]="10">
+			<ng-template pTemplate="header">
+				<tr>
+					<th>*</th>
+					<th>Placa</th>
+					<th>Marca</th>
+					<th>Modelo</th>
+					<th>Chassi</th>
+					<th>Renavam</th>
+					<th>Ano</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="body" let-vehicle>
+				<tr>
+					<td>{{ vehicle.id }}</td>
+					<td>{{ vehicle.plate }}</td>
+					<td>{{ getDescriptionByBrand(vehicle.brandId) }}</td>
+					<td>{{ getDescriptionByModel(vehicle.modelId) }}</td>
+					<td>{{ vehicle.chassi }}</td>
+					<td>{{ vehicle.renavam }}</td>
+					<td>{{ vehicle.year }}</td>
+					<td><p-button icon="pi pi-file-edit" (click)="editVehicle(vehicle.id)"></p-button></td>
+					<td><p-button icon="pi pi-trash" styleClass="p-button-danger" (click)="deleteVehicle(vehicle.id)"></p-button></td>
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="emptymessage">
+				<tr>
+					<td [attr.colspan]="9" class="text-center">
+						Nenhum item cadastrado
+					</td>
+				</tr>
+			</ng-template>
+		</p-table>
+	</div>
+</div>
