@@ -4,8 +4,8 @@ Este projeto foi gerados com [Angular CLI](https://github.com/angular/angular-cl
 
 ## Development server
 
-Execute `npm install`
-Execute `npm run start` para executar o projeto localmente. Acesse o endereço `http://localhost:4200/`.
+Execute `npm install`.
+Execute `npm run start` para abrir o proejto localmente. Acesse o endereço `http://localhost:4200/`.
 O sistema foi desenvolvido com a biblioteca gráfica [`primeng`](https://primeng.org) e com o banco de dados [`Dexie.org`](https://dexie.org)
 
 
